@@ -11,7 +11,7 @@
 ;; Maintainer: Dmitri Akatov <akatov@gmail.com>
 ;; URL: https://github.com/akatov/pretty-mode
 ;; Keywords: pretty, unicode, symbols
-;; Version: 2.0.2
+;; Version: 2.0.3
 
 ;; This file is NOT part of GNU Emacs.
 
@@ -80,11 +80,13 @@
     (inf-haskell-mode . haskell-mode) ; is this still used??
     (inferior-haskell-mode . haskell-mode)
     (nrepl-mode . clojure-mode)
+    (cider-repl-mode . clojure-mode)
     (tuareg-interactive-mode . tuareg-mode)
     (inferior-python-mode . python-mode)
     (inferior-octave-mode . octave-mode)
     (js-mode . javascript-mode)
     (js2-mode . javascript-mode)
+    (enh-ruby-mode . ruby-mode)
     (inferior-ruby-mode . ruby-mode))
   "Alist mapping from modes that should have the same substitution
 patterns as to the mode they are mapping to. Usually these are
@@ -149,7 +151,7 @@ implied mode from MODE and return it."
     python-mode sml-mode jess-mode clips-mode clojure-mode
     lisp-mode emacs-lisp-mode scheme-mode sh-mode
     perl-mode c++-mode c-mode haskell-mode
-    javascript-mode coffee-mode groovy-mode)
+    javascript-mode coffee-mode groovy-mode fsharp-mode)
   "A list of all supported modes.")
 
 (defun ensure-modes (modes)
@@ -331,7 +333,7 @@ expected by `pretty-patterns'"
 
 Should be a list of the form ((MODE ((REGEXP . GLYPH) ...)) ...)"
   (let* ((lispy '(scheme emacs-lisp lisp clojure jess clips))
-         (mley '(haskell tuareg sml))
+         (mley '(haskell tuareg sml fsharp))
          (c-like '(c c++ perl sh python java ess ruby javascript coffee groovy))
          (all (append lispy mley c-like (list 'octave))))
     (pretty-compile-patterns
@@ -376,7 +378,7 @@ Should be a list of the form ((MODE ((REGEXP . GLYPH) ...)) ...)"
                 (:!= "!=" ,@c-like scheme octave)
                 (:!== "!==" javascript)
                 (:not= "not=" clojure)
-                (:<> "<>" tuareg octave)
+                (:<> "<>" tuareg octave fsharp)
                 (:~= "~=" octave)
                 (:/= "/=" haskell))
 
@@ -401,13 +403,13 @@ Should be a list of the form ((MODE ((REGEXP . GLYPH) ...)) ...)"
        ;;; 00AC ¬ NOT SIGN
        (?\u00AC :neg (:logic)
                 (:! "!" c c++ perl sh ruby javascript)
-                (:not "not" ,@lispy haskell sml))
+                (:not "not" ,@lispy haskell sml fsharp))
 
        ;;; 2227 ∧ LOGICAL AND
        (?\u2227 :wedge (:logic)
                 (:and "and" ,@lispy python ruby coffee)
                 (:andalso "andalso" sml)
-                (:&& "&&" c c++ perl haskell ruby javascript coffee))
+                (:&& "&&" c c++ perl haskell ruby javascript coffee fsharp))
 
        ;;; 22AB ⊫ DOUBLE VERTICAL BAR DOUBLE RIGHT TURNSTILE
        (?\u22AB :models (:logic :logic-extended)
@@ -417,7 +419,7 @@ Should be a list of the form ((MODE ((REGEXP . GLYPH) ...)) ...)"
        (?\u2228 :vee (:logic)
                 (:or "or" ,@lispy python ruby coffee)
                 (:orelse "orelse" sml)
-                (:|| "||" c c++ perl haskell ruby javascript coffee))
+                (:|| "||" c c++ perl haskell ruby javascript coffee fsharp))
 
        ;;; 22C0 ⋀ N-ARY LOGICAL AND
        (?\u22C0 :bigwedge (:logic :logic-nary)
@@ -450,7 +452,8 @@ Should be a list of the form ((MODE ((REGEXP . GLYPH) ...)) ...)"
 
        ;; 2282 ⊂ SUBSET OF
        (?\u2282 :subset (:sets :sets-relations)
-                (:isProperSubsetOf "`isProperSubsetOf`" haskell)) ; Data.Set
+                (:isProperSubsetOf "`isProperSubsetOf`" haskell)
+                (:subset "subset" ess))
 
        ;; 2286 ⊆ SUBSET OF OR EQUAL TO
        (?\u2286 :subseteq (:sets :sets-relations)
@@ -522,6 +525,7 @@ Should be a list of the form ((MODE ((REGEXP . GLYPH) ...)) ...)"
        (?\u03BB :function (:function)
                 (:fn "fn" sml clojure)
                 (:fun "fun" tuareg)
+                (:fun "fun" fsharp)
                 (:function "function" javascript ess)
                 (:lambda "lambda" scheme lisp emacs-lisp ruby)
                 (:\\ "\\" haskell))
@@ -860,6 +864,7 @@ Should be a list of the form ((MODE ((REGEXP . GLYPH) ...)) ...)"
                 (:\'\(\) "'()" scheme)
                 (:empty "empty" scheme)
                 (:NULL "NULL" c c++ ess)
+                (:nullptr "nullptr" c++)
                 (:None "None" python)
                 (:\(\) "()" ,@mley)
                 (:\[\] "[]" ,@mley))
@@ -886,6 +891,10 @@ Should be a list of the form ((MODE ((REGEXP . GLYPH) ...)) ...)"
        ;; 29FB ⧻ TRIPLE PLUS
        (?\u29FB :+++ (:arithmetic :arithmetic-triple)
                 (:+++ "+++" haskell))        ; Control.Arrow
+
+       ;; 254C ╌ DOUBLE DASH (MINUS)
+       (?\u254C :-- (:arithmetic :arithmetic-double)
+                (:-- "--" haskell c c++ java javascript coffee))
 
        ;;; Undefined
 
