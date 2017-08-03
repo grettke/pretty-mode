@@ -539,7 +539,8 @@ Should be a list of the form ((MODE ((REGEXP . GLYPH) ...)) ...)"
 
        ;;; 23CE ⏎ RETURN SYMBOL
        (?\u23CE :return (:function)
-                (:return "return" ess))
+                (:return "return" ess)
+                (:return "return" go))
 
        ;;; 2B9E ⮞ BLACK RIGHTWARDS EQUILATERAL ARROWHEAD
        (?\u2B9E :ForwardPipe (:function)
