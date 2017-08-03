@@ -807,7 +807,7 @@ Should be a list of the form ((MODE ((REGEXP . GLYPH) ...)) ...)"
 
        ;; 2190 ← LEFTWARDS ARROW
        (?\u2190 :leftarrow (:arrows)
-                (:<- "<-" ,@mley ess ,@lispy))
+                (:<- "<-" ,@mley ess ,@lispy go))
 
        ;; 219E ↞ LEFTWARDS TWO HEADED ARROW
        (?\u219E :twoheadleftarrow (:arrows :arrows-twoheaded)
