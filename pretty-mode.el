@@ -151,7 +151,8 @@ implied mode from MODE and return it."
     python-mode sml-mode jess-mode clips-mode clojure-mode
     lisp-mode emacs-lisp-mode scheme-mode sh-mode
     perl-mode c++-mode c-mode haskell-mode
-    javascript-mode coffee-mode groovy-mode fsharp-mode)
+    javascript-mode coffee-mode groovy-mode fsharp-mode
+    go-mode)
   "A list of all supported modes.")
 
 (defun ensure-modes (modes)
@@ -334,7 +335,8 @@ expected by `pretty-patterns'"
 Should be a list of the form ((MODE ((REGEXP . GLYPH) ...)) ...)"
   (let* ((lispy '(scheme emacs-lisp lisp clojure jess clips))
          (mley '(haskell tuareg sml fsharp))
-         (c-like '(c c++ perl sh python java ess ruby javascript coffee groovy))
+         (c-like '(c c++ perl sh python java ess ruby javascript coffee groovy
+                     go ))
          (all (append lispy mley c-like (list 'octave))))
     (pretty-compile-patterns
      `(
