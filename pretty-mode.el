@@ -863,7 +863,7 @@ Should be a list of the form ((MODE ((REGEXP . GLYPH) ...)) ...)"
 
        ;; 2205 ∅ EMPTY SET
        (?\u2205 :emptyset (:nil)
-                (:nil "nil" emacs-lisp ruby clojure)
+                (:nil "nil" emacs-lisp ruby clojure go)
                 (:null "null" scheme java coffee javascript)
                 (:\'\(\) "'()" scheme)
                 (:empty "empty" scheme)
