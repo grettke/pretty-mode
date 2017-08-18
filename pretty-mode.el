@@ -543,6 +543,10 @@ Should be a list of the form ((MODE ((REGEXP . GLYPH) ...)) ...)"
                 (:return "return" ess)
                 (:return "return" go))
 
+       ;;; 1f5b6 🖶 PRINTER ICON
+       (?\U0001f5b6 :printline (:function)
+                    (:fmt.Println "fmt.Println" go))
+
        ;;; 2B9E ⮞ BLACK RIGHTWARDS EQUILATERAL ARROWHEAD
        (?\u2B9E :ForwardPipe (:function)
                 (:ForwardPipe "%>%" ess))
