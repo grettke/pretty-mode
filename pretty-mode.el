@@ -392,6 +392,11 @@ Should be a list of the form ((MODE ((REGEXP . GLYPH) ...)) ...)"
        (?\u2A76 :=== (:equality)
                 (:=== "===" ruby javascript))
 
+
+       ;;; 2A77 ⩷ EQUALS SIGN WITH TWO DOTS ABOVE AND TWO DOTS BELOW
+       (?\u2A77 :⩷ (:equality)
+                (::= ":=" go))
+
        ;; 2245 ≅ APPROXIMATELY EQUAL TO
        (?\u2245 :=~ (:equality)
                 (:=~ "=~" ruby))
