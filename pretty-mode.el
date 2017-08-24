@@ -552,6 +552,10 @@ Should be a list of the form ((MODE ((REGEXP . GLYPH) ...)) ...)"
        (?\U0001f5b6 :printline (:function)
                     (:fmt.Println "fmt.Println" go))
 
+       ;;; 1f589 🖉 LOWER LEFT PENCIL
+       (?\U0001f589 :printf (:function)
+                    (:fmt.Printf "fmt.Printf" go))
+
        ;;; 2B9E ⮞ BLACK RIGHTWARDS EQUILATERAL ARROWHEAD
        (?\u2B9E :ForwardPipe (:function)
                 (:ForwardPipe "%>%" ess))
