@@ -549,7 +549,7 @@ Should be a list of the form ((MODE ((REGEXP . GLYPH) ...)) ...)"
                 (:return "return" go))
 
        ;;; 1f5b6 🖶 PRINTER ICON
-       (?\U0001f5b6 :printline (:function)
+       (?\U0001f5b6 :println (:function)
                     (:fmt.Println "fmt.Println" go))
 
        ;;; 1f589 🖉 LOWER LEFT PENCIL
