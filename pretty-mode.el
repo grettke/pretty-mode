@@ -548,9 +548,14 @@ Should be a list of the form ((MODE ((REGEXP . GLYPH) ...)) ...)"
                 (:return "return" ess)
                 (:return "return" go))
 
-       ;;; 1f5b6 🖶 PRINTER ICON
-       (?\U0001f5b6 :printf (:function)
+       ;;; 1F5B6 🖶 PRINTER ICON
+       (?\U0001F5B6 :println (:function)
+                    (:fmt.Println "fmt.Println" go))
+
+       ;;; 1f34a 🍊 TANGERINE
+       (?\U0001f34a :printf (:function)
                     (:fmt.Printf "fmt.Printf" go))
+
 
        ;;; 2B9E ⮞ BLACK RIGHTWARDS EQUILATERAL ARROWHEAD
        (?\u2B9E :ForwardPipe (:function)
