@@ -395,7 +395,8 @@ Should be a list of the form ((MODE ((REGEXP . GLYPH) ...)) ...)"
 
        ;;; 2A77 ⩷ EQUALS SIGN WITH TWO DOTS ABOVE AND TWO DOTS BELOW
        (?\u2A77 :⩷ (:equality)
-                (::= ":=" go))
+                (::= ":=" go)
+                (:ab "alpha beta" go))
 
        ;; 2245 ≅ APPROXIMATELY EQUAL TO
        (?\u2245 :=~ (:equality)
@@ -551,6 +552,10 @@ Should be a list of the form ((MODE ((REGEXP . GLYPH) ...)) ...)"
        ;;; 1F5B6 🖶 PRINTER ICON
        (?\U0001F5B6 :println (:function)
                     (:fmt.Println "fmt.Println" go))
+
+       ;;; 1F610 😐 NEUTRAL FACE
+       (?\U0001F610 :nullcheck (:function)
+                    (:iferrnoteqnil "if err != nil " go))
 
        ;;; 1F34A 🍊 TANGERINE
        (?\U0001F34A :printf (:function)
