@@ -553,9 +553,9 @@ Should be a list of the form ((MODE ((REGEXP . GLYPH) ...)) ...)"
        (?\U0001F5B6 :println (:function)
                     (:fmt.Println "fmt.Println" go))
 
-       ;;; 1F610 😐 NEUTRAL FACE
-       (?\U0001F610 :nullcheck (:function)
-                    (:iferrnoteqnil "if err != nil " go))
+       ;;; 1F60C 😌 RELIEVED FACE
+       (?\U0001F60C :nullcheck (:function)
+                    (:iferrnoteqnil "if err != nil" go))
 
        ;;; 1F34A 🍊 TANGERINE
        (?\U0001F34A :printf (:function)
